@@ -7,7 +7,7 @@ on:
 
 jobs:
   env-test:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     environment:
       name: TEST
     
