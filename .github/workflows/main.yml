@@ -1,0 +1,20 @@
+name: test env
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  env-test:
+    run-on: ubuntu-latest
+    environment:
+      name: TEST
+    
+    steps:
+    
+    - uses: britannio/action-install-flutter@v1.1
+
+    - name: test env
+    run: |
+      echo ${{ secrets.TEST1 }}
