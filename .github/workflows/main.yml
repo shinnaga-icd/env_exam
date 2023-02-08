@@ -27,5 +27,6 @@ jobs:
     - name: build
       run: |
         cd repository
+        flutter pub get
         flutter pub run build_runner build
         flutter build apk --release
