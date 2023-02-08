@@ -7,7 +7,7 @@ const dotenvFilePath =
 
 @Envied(path: dotenvFilePath, obfuscate: true)
 abstract class Env {
-  @EnviedField(varName: 'secrets.TEST1')
+  @EnviedField(varName: 'VAL1')
   static final val1 = _Env.val1;
   @EnviedField(varName: 'vars.TESTA')
   static final val2 = _Env.val2;
