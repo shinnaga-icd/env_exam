@@ -16,5 +16,5 @@ jobs:
     - uses: britannio/action-install-flutter@v1.1
 
     - name: test env
-    run: |
-      echo ${{ secrets.TEST1 }}
+      run: |
+        echo ${{ secrets.TEST1 }}
