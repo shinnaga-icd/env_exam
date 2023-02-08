@@ -12,7 +12,11 @@ jobs:
       name: TEST
     
     steps:
-    
+
+    - uses: actions/checkout@v2
+      with:
+        path: 'repository'
+          
     - uses: britannio/action-install-flutter@v1.1
 
     - name: test env
@@ -20,3 +24,8 @@ jobs:
         echo ${{ secrets.TEST1 }}
         echo ${{ vars.TESTA }}
 
+    - name: build
+      run: |
+        cd repository
+        flutter pub run build_runner build
+        flutter build apk --release
