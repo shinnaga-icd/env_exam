@@ -29,4 +29,4 @@ jobs:
       run: |
         cd repository
         flutter pub get
-        flutter build apk --no-debug --no-profile --release
+        flutter build aar --release
