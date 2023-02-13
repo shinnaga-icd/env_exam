@@ -1,0 +1,40 @@
+name: Create Artifact for Android
+
+inputs:
+  env_secrets:
+    description: "envのsecretを指定"
+    required: true
+  build-target:
+    description: "ビルドターゲット（all[規定]/release-only）"
+    default: all
+
+runs:
+  using: 'composite'
+  steps:
+    - name: decode base64 file
+      env:
+        ENV_BASE64: ${{ inputs.env_secrets }}
+      run: |
+        echo $ENV_BASE64 | base64 --decode > repository/lib/env.g.dart
+
+    - name: flutter build
+      if: inputs.build-target == 'all'
+      run: |
+        cd ${GITHUB_WORKSPACE}/repository
+        flutter build aar --pub
+      shell: bash
+
+    - name: flutter build
+      if: inputs.build-target == 'release-only'
+      run: |
+        cd ${GITHUB_WORKSPACE}/repository
+        flutter build aar --pub --no-debug --no-profile
+      shell: bash
+
+    - name: upload artifact
+      uses: actions/upload-artifact@v3.1.1
+      with: 
+        name: android_build
+        # ${GITHUB_WORKSPACE}は利用不可 https://github.com/actions/upload-artifact/issues/110
+        path: ${{ github.workspace }}/repository/build/host/outputs/repo/com/example/env_exam/*
+        retention-days: 15
