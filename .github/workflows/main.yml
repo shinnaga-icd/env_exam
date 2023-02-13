@@ -19,11 +19,9 @@ jobs:
     - name: decode base64 file
       env:
         ENV_BASE64: ${{ secrets.ENV_BASE64 }}
-      run:
+      run: |
         echo $ENV_BASE64 | base64 --decode > env.g.dart
-
-    -name: check base64 file
-      run: ls -la
+        ls -la
 
     # - uses: britannio/action-install-flutter@v1.1
 
