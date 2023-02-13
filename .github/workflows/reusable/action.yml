@@ -13,7 +13,7 @@ runs:
   steps:
     - name: decode base64 file
       env:
-        ENV_BASE64: ${{ inputs.env_secrets }}
+        ENV_BASE64: ${{ secrets.${{ inputs.env_secrets }} }} 
       run: |
         echo $ENV_BASE64 | base64 --decode > repository/lib/env.g.dart
       shell: bash
