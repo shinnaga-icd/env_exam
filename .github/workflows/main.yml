@@ -16,17 +16,15 @@ jobs:
     - uses: actions/checkout@v2
       with:
         path: 'repository'
+
+    - name: check base64 file
+      run: |
+        echo ${{ secret.ENV_BASE64 }}
           
-    - uses: britannio/action-install-flutter@v1.1
+    # - uses: britannio/action-install-flutter@v1.1
 
-    - name: test env
-      run: |
-        echo ${{ secrets.TEST1 }}
-        echo ${{ vars.TESTA }}
-
-    - name: build
-      run: |
-        cd repository
-        flutter pub get
-        flutter pub run build_runner build
-        flutter build apk --release
+    # - name: build
+    #   run: |
+    #     cd repository
+    #     flutter pub get
+    #     flutter build apk --no-debug --no-profile --release
