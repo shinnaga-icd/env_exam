@@ -13,6 +13,7 @@ runs:
   steps:
     - name: check inputs
       run: echo "${{ secrets[inputs.secrets_name] }}"
+      shell: bash
 
     # - name: decode base64 file
     #   env:
