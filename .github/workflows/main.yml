@@ -13,11 +13,11 @@ jobs:
     
     steps:
 
-    - uses: britannio/action-install-flutter@v1.1
+    # - uses: britannio/action-install-flutter@v1.1
 
-    - uses: actions/checkout@v2    
-      with:
-        path: 'repository'
+    # - uses: actions/checkout@v2    
+    #   with:
+    #     path: 'repository'
 
     - uses: ./repository/.github/workflows/reusable
       with:
