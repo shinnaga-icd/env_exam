@@ -11,9 +11,9 @@ void main(List<String> args) {
   if (config.isEmpty) throw Exception('config parameter is missing');
 }
 
-@Envied(path: dotenvFilePath, obfuscate: true)
+@Envied(path: dotenvFilePath)
 abstract class Env {
-  @EnviedField(varName: 'VAL1')
+  @EnviedField(varName: 'API_KEY')
   static final val1 = _Env.val1;
   @EnviedField(varName: 'VAL2')
   static final val2 = _Env.val2;
